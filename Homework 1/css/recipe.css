@@ -1,0 +1,64 @@
+/*
+  Modern Web Programming
+  Homework 1 Recipe
+
+  Author: Jiahao Zheng
+  School ID: 16305204
+  GitHub: https://github.com/Jiahonzheng
+  Mail: jiahonzheng@gmail.com
+
+  recipe.css
+  The CSS file for pie.html
+ */
+
+body {
+  background-attachment: fixed;
+  background-color: white;
+  background-image: url("http://courses.cs.washington.edu/courses/cse190m/09sp/homework/1/silverware.jpg");
+  background-repeat: repeat;
+  color: #404040;
+  font-family: Georgia, Garamond, sans-serif;
+  font-size: 11pt;
+}
+
+h1 {
+  font-size: 22pt;
+  font-weight: bold;
+  text-align: center;
+}
+
+h2 {
+  font-size: 18pt;
+  font-weight: normal;
+  text-align: left;
+}
+
+h1,
+h2 {
+  background-color: #f0f0f0;
+  color: #a4a400;
+  font-family: "Century Gothic", Futura, Verdana, sans-serif;
+  letter-spacing: 0.2em;
+  text-decoration: underline;
+}
+
+a {
+  color: #a4a400;
+}
+
+span {
+  font-weight: bold;
+}
+
+blockquote {
+  background-color: #ffffc8;
+  font-style: italic;
+}
+
+ul {
+  list-style-image: url("http://courses.cs.washington.edu/courses/cse190m/09sp/homework/1/pie_icon.gif");
+}
+
+img {
+  border: 0;
+}
