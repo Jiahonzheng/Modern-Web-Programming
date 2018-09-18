@@ -26,7 +26,7 @@ body {
   width: 100%;
   height: 50vh;
   margin-bottom: 1em;
-  background-image: url(https://modern-web-programming.oss-cn-shenzhen.aliyuncs.com/hw1-header.png);
+  background-image: url("../images/hw1-header.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
