@@ -82,6 +82,9 @@ body {
   background-repeat: repeat-x;
   height: 83px;
   text-align: left;
+}
+
+#rotten-image {
   vertical-align: bottom;
 }
 
@@ -120,10 +123,6 @@ p.review {
   font-weight: bold;
   overflow: auto;
   padding: 8px;
-}
-
-p.review q {
-  margin-left: 5px;
 }
 
 p.reviewer {
