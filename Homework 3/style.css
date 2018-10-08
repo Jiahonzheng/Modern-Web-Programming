@@ -1,0 +1,232 @@
+/*
+  Modern Web Programming
+  Homework 3 Ring Menu
+
+  Author: Jiahao Zheng
+  School ID: 16305204
+  GitHub: https://github.com/Jiahonzheng
+  Mail: jiahonzheng@gmail.com
+
+  style.css
+  The CSS file for index.html
+*/
+
+#at-plus-container {
+  font-family: Sans-serif;
+  font-weight: bold;
+}
+
+#bottom-positioner {
+  bottom: 12%;
+  height: 40px;
+  left: 50%;
+  position: absolute;
+  width: 40px;
+}
+
+#bottom-positioner ul {
+  list-style-type: none;
+  margin: 0px;
+  padding-left: 0px;
+}
+
+#info-bar {
+  height: 40px;
+  position: absolute;
+  width: 40px;
+}
+
+.info {
+  background-color: #7e7e80;
+  border-radius: 50%;
+  bottom: -35%;
+  height: 10px;
+  left: 40%;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.7s 0.3s;
+  width: 10px;
+}
+
+#button:hover .info {
+  height: 150px;
+  transform: translate(-70px, -182px);
+  transition-delay: 0s;
+  width: 150px;
+}
+
+.info ul {
+  position: relative;
+  transition: all 0.7s 0.3s;
+}
+
+#button:hover .info > ul {
+  transform: translate(70px, 0px);
+  transition-delay: 0s;
+}
+
+.info li {
+  position: relative;
+}
+
+.user {
+  left: -20px;
+  top: 15px;
+}
+.comment {
+  left: -30px;
+  top: 25px;
+}
+.posted {
+  left: -45px;
+  top: 30px;
+}
+.like {
+  left: 10px;
+  top: -2px;
+}
+
+.info li span {
+  position: absolute;
+}
+.user span {
+  font-size: large;
+  left: 38px;
+  top: 0px;
+}
+.comment span {
+  font-size: xx-large;
+  left: 50px;
+  top: -5px;
+}
+.posted span,
+.like span {
+  font-size: x-large;
+  left: 35px;
+  top: 0px;
+}
+.page span {
+  color: white;
+}
+.mine span {
+  color: #079e6e;
+}
+.mine {
+  float: left;
+  width: 100%;
+}
+
+img {
+  height: 28px;
+  width: 28px;
+}
+.comment > img {
+  height: 35px;
+  width: 35px;
+}
+
+#control-ring-container {
+  position: absolute;
+}
+
+#control-ring {
+  height: 40px;
+  position: relative;
+  width: 40px;
+}
+
+.button {
+  border-radius: 50%;
+  background-color: #777777;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40px;
+  opacity: 0;
+  position: relative;
+  transition: all 0.6s 0.3s;
+}
+
+#button:hover .button {
+  opacity: 1;
+  transition: all 0.6s;
+}
+
+.mask {
+  background-image: url(assets/images/nomask.png);
+  bottom: 0px;
+}
+.history {
+  background-image: url(assets/images/history.png);
+  bottom: 40px;
+}
+.message {
+  background-image: url(assets/images/message.png);
+  bottom: 80px;
+}
+.setting {
+  background-image: url(assets/images/setting.png);
+  bottom: 120px;
+}
+.sign {
+  background-image: url(assets/images/signin.png);
+  bottom: 160px;
+}
+.unread {
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+  height: 16px;
+  left: 25px;
+  opacity: 0;
+  padding: 3px 0px;
+  position: absolute;
+  text-align: center;
+  top: -5px;
+  transition-delay: 0.6s;
+  width: 22px;
+}
+
+#button:hover .mask {
+  transform: translate(-75px, -45px);
+}
+#button:hover .history {
+  transform: translate(-90px, 0px);
+}
+#button:hover .message {
+  transform: translate(-70px, 45px);
+}
+#button:hover .setting {
+  transform: translate(-25px, 75px);
+}
+#button:hover .sign {
+  transform: translate(25px, 65px);
+}
+#button:hover .unread {
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+.apb {
+  height: 40px;
+  position: absolute;
+  width: 40px;
+}
+.icon {
+  background-color: #777777; /*the gray color*/
+  background-image: url(assets/images/atplus_white.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  border-radius: 50%;
+  height: 100%;
+  position: relative;
+  transition: all 0.5s 0.6s;
+  width: 100%;
+}
+
+#button:hover .icon {
+  background-color: rgba(48, 63, 159, 1); /*the blue color*/
+  background-image: url(assets/images/atplus_green.png);
+  transform: scale(1.5, 1.5);
+  transition: all 0.7s;
+}
