@@ -44,7 +44,7 @@
   left: 40%;
   overflow: hidden;
   position: relative;
-  transition: all 0.7s 0.3s;
+  transition: all 0.4s 0.3s;
   width: 10px;
 }
 
@@ -57,7 +57,7 @@
 
 .info ul {
   position: relative;
-  transition: all 0.7s 0.3s;
+  transition: all 0.4s 0.3s;
 }
 
 #button:hover .info > ul {
@@ -143,12 +143,12 @@ img {
   height: 40px;
   opacity: 0;
   position: relative;
-  transition: all 0.6s 0.3s;
+  transition: all 0.4s 0.3s;
 }
 
 #button:hover .button {
   opacity: 1;
-  transition: all 0.6s;
+  transition-delay: 0s;
 }
 
 .mask {
@@ -212,7 +212,7 @@ img {
   width: 40px;
 }
 .icon {
-  background-color: #777777; /*the gray color*/
+  background-color: #989fcf;
   background-image: url(assets/images/atplus_white.png);
   background-position: center;
   background-repeat: no-repeat;
@@ -220,13 +220,13 @@ img {
   border-radius: 50%;
   height: 100%;
   position: relative;
-  transition: all 0.5s 0.6s;
+  transition: all 0.4s 0.4s;
   width: 100%;
 }
 
 #button:hover .icon {
-  background-color: rgba(48, 63, 159, 1); /*the blue color*/
+  background-color: rgba(48, 63, 159, 1);
   background-image: url(assets/images/atplus_green.png);
   transform: scale(1.5, 1.5);
-  transition: all 0.7s;
+  transition: all 0.5s;
 }
