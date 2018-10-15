@@ -1,135 +1,136 @@
-const calculate = (n1, operator, n2) => {
-  const firstNum = parseFloat(n1);
-  const secondNum = parseFloat(n2);
-  if (operator === "add") return firstNum + secondNum;
-  if (operator === "subtract") return firstNum - secondNum;
-  if (operator === "multiply") return firstNum * secondNum;
-  if (operator === "divide") return firstNum / secondNum;
-};
+class Calculator {
+  constructor() {
+    this.DOMDisplay = null;
+    this.state = {
+      keyType: "",
+      keyValue: "",
+      expression: "0"
+    };
+    this.init = this.init.bind(this);
+    this.onClick = this.onClick.bind(this);
 
-const getKeyType = key => {
-  const { action } = key.dataset;
-  if (!action) return "number";
-  if (
-    action === "add" ||
-    action === "subtract" ||
-    action === "multiply" ||
-    action === "divide"
-  )
-    return "operator";
-  // For everything else, return the action
-  return action;
-};
-
-const createResultString = (key, displayedNum, state) => {
-  const keyContent = key.textContent;
-  const keyType = getKeyType(key);
-  const { firstValue, operator, modValue, previousKeyType } = state;
-
-  if (keyType === "number") {
-    return displayedNum === "0" ||
-      previousKeyType === "operator" ||
-      previousKeyType === "calculate"
-      ? keyContent
-      : displayedNum + keyContent;
+    window.onload = this.init;
   }
 
-  if (keyType === "decimal") {
-    if (!displayedNum.includes(".")) return displayedNum + ".";
-    if (previousKeyType === "operator" || previousKeyType === "calculate")
-      return "0.";
-    return displayedNum;
+  init() {
+    this.DOMDisplay = document.querySelector(".calculator-display");
+    document
+      .querySelector(".calculator-keys")
+      .addEventListener("click", this.onClick);
   }
 
-  if (keyType === "operator") {
-    return firstValue &&
-      operator &&
-      previousKeyType !== "operator" &&
-      previousKeyType !== "calculate"
-      ? calculate(firstValue, operator, displayedNum)
-      : displayedNum;
+  onClick(e) {
+    if (!e.target.matches("button")) {
+      return;
+    }
+
+    this.setState({
+      ...this.getKeyInfo(e.target)
+    });
+    this.DOMDisplay.textContent = this.createDisplayString();
   }
 
-  if (keyType === "clear") return 0;
-
-  if (keyType === "calculate") {
-    return firstValue
-      ? previousKeyType === "calculate"
-        ? calculate(displayedNum, operator, modValue)
-        : calculate(firstValue, operator, displayedNum)
-      : displayedNum;
-  }
-};
-
-const updateCalculatorState = (
-  key,
-  calculator,
-  calculatedValue,
-  displayedNum
-) => {
-  const keyType = getKeyType(key);
-  const {
-    firstValue,
-    operator,
-    modValue,
-    previousKeyType
-  } = calculator.dataset;
-
-  calculator.dataset.previousKeyType = keyType;
-
-  if (keyType === "operator") {
-    calculator.dataset.operator = key.dataset.action;
-    calculator.dataset.firstValue =
-      firstValue &&
-      operator &&
-      previousKeyType !== "operator" &&
-      previousKeyType !== "calculate"
-        ? calculatedValue
-        : displayedNum;
+  setState(newState) {
+    this.state = Object.assign({}, this.state, newState);
   }
 
-  if (keyType === "calculate") {
-    calculator.dataset.modValue =
-      firstValue && previousKeyType === "calculate" ? modValue : displayedNum;
+  getKeyInfo(key) {
+    const { value } = key.dataset;
+
+    if (["delete", "clear", "calculate"].includes(value)) {
+      return { keyType: value };
+    }
+
+    if (value === ".") {
+      return { keyType: "decimal", keyValue: value };
+    }
+
+    if (isNaN(value)) {
+      return { keyType: "operator", keyValue: value };
+    }
+
+    return { keyType: "number", keyValue: value };
   }
 
-  if (keyType === "clear" && key.textContent === "AC") {
-    calculator.dataset.firstValue = "";
-    calculator.dataset.modValue = "";
-    calculator.dataset.operator = "";
-    calculator.dataset.previousKeyType = "";
+  createDisplayString() {
+    const { keyType, keyValue, expression } = this.state;
+    let newExpression = expression;
+
+    if (keyType === "delete") {
+      newExpression = expression.slice(0, expression.length - 1);
+      newExpression = newExpression ? newExpression : "0";
+    }
+
+    if (keyType === "clear") {
+      newExpression = "0";
+    }
+
+    if (keyType === "calculate") {
+      newExpression = this.calculate(expression);
+    }
+
+    if (keyType === "number") {
+      if (
+        expression.length !== 1 ||
+        expression[0] !== "0" ||
+        keyValue !== "0"
+      ) {
+        newExpression = (expression === "0" ? "" : expression) + keyValue;
+      }
+    }
+
+    if (keyType === "operator" || keyType === "decimal") {
+      const last = expression[expression.length - 1];
+
+      if (["(", ")"].includes(keyValue)) {
+        newExpression = (expression === "0" ? "" : expression) + keyValue;
+      } else {
+        if (!["+", "-", "*", "/", "."].includes(last)) {
+          newExpression = expression + keyValue;
+        }
+      }
+    }
+
+    this.setState({
+      expression: newExpression
+    });
+
+    return this.expression2display(newExpression);
   }
-};
 
-const updateVisualState = (key, calculator) => {
-  const keyType = getKeyType(key);
-  Array.from(key.parentNode.children).forEach(k =>
-    k.classList.remove("is-depressed")
-  );
+  calculate(expression) {
+    let result = "0";
 
-  if (keyType === "operator") key.classList.add("is-depressed");
-  if (keyType === "clear" && key.textContent !== "AC") key.textContent = "AC";
-  if (keyType !== "clear") {
-    const clearButton = calculator.querySelector("[data-action=clear]");
-    clearButton.textContent = "CE";
+    try {
+      result = eval(expression) + "";
+      result === "undefined" ? "0" : result;
+    } catch (err) {
+      alert("请检查您的表达式是否正确");
+    }
+
+    return result;
   }
-};
 
-const calculator = document.querySelector(".calculator");
-const display = calculator.querySelector(".calculator__display");
-const keys = calculator.querySelector(".calculator__keys");
+  expression2display(expression) {
+    expression = expression ? expression : "0";
+    let display = "";
 
-keys.addEventListener("click", e => {
-  if (!e.target.matches("button")) return;
-  const key = e.target;
-  const displayedNum = display.textContent;
-  const resultString = createResultString(
-    key,
-    displayedNum,
-    calculator.dataset
-  );
+    for (let i = 0; i < expression.length; i++) {
+      if (expression[i] === "*") {
+        display += "×";
+        continue;
+      }
 
-  display.textContent = resultString;
-  updateCalculatorState(key, calculator, resultString, displayedNum);
-  updateVisualState(key, calculator);
-});
+      if (expression[i] === "/") {
+        display += "÷";
+        continue;
+      }
+
+      display += expression[i];
+    }
+
+    return display;
+  }
+}
+
+new Calculator();
