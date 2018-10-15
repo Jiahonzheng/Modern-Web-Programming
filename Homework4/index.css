@@ -13,7 +13,7 @@
 
 body {
   align-items: center;
-  background-image: linear-gradient(236deg, #74ebd5, #acb6e5);
+  background-image: linear-gradient(236deg, #78f0da, #a7b2e6);
   display: flex;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 175%;
@@ -90,7 +90,7 @@ button {
 }
 
 .key-calculate {
-  background-image: linear-gradient(to bottom, #fe886a, #ff7033);
+  background-image: linear-gradient(to bottom, #fa8668, #ff7033);
   grid-column: 4;
   grid-row: 5;
 }
