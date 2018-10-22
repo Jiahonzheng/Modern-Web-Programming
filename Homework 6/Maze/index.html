@@ -1,0 +1,49 @@
+<!-- 
+  Modern Web Programming
+  Homework 6 Maze
+  
+  Author: Jiahao Zheng
+  School ID: 16305204
+  GitHub: https://github.com/Jiahonzheng
+  Mail: jiahonzheng@gmail.com
+
+  index.html
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Mouse Maze</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="index.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>The Amazing Mouse Maze!</h1>
+      <p>Move your mouse over the "S" to begin.</p>
+      <p id="result">""</p>
+    </header>
+
+    <main id="map">
+      <div class="wall top"></div>
+      <div class="wall left"></div>
+      <div class="wall right"></div>
+      <div class="endpoint" id="start">S</div>
+      <div class="endpoint" id="end">E</div>
+      <div class="wall middle"></div>
+      <div class="wall bottom"></div>
+    </main>
+
+    <footer>
+      <p>The object of this game is to huide the mouse cursor through the start area and get to the area.Be sure to
+        avoid the walls:</p>
+      <div></div>
+      <p>Good Luck!</p>
+    </footer>
+  </div>
+</body>
+
+</html>

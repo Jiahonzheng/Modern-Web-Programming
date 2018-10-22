@@ -1,0 +1,139 @@
+/*
+  Modern Web Programming
+  Homework 6 Maze
+
+  Author: Jiahao Zheng
+  School ID: 16305204
+  GitHub: https://github.com/Jiahonzheng
+  Mail: jiahonzheng@gmail.com
+
+  index.css
+  The CSS file for index.html
+ */
+
+body {
+  font-family: "Century Gothic", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin-top: 3%;
+}
+
+/* Header */
+header {
+  text-align: center;
+}
+
+header h1 {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+header p {
+  font-size: 25px;
+}
+
+/* Hide result */
+#result {
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+/* Show result */
+#result[enable] {
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+/* Main */
+main {
+  width: 500px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wall {
+  background-color: #eeeeee;
+}
+
+/* Stay red when wall is collided */
+.wall[stay] {
+  background-color: red;
+}
+
+#map .top,
+.bottom {
+  height: 20%;
+  border: 1px solid black;
+}
+
+#map .left,
+.right {
+  border: 1px solid black;
+  border-top: none;
+  height: 48%;
+  margin-top: -1px;
+  width: 30%;
+}
+
+#map .left {
+  float: left;
+}
+
+#map .right {
+  float: right;
+}
+
+#map .endpoint {
+  border: 1px solid black;
+  font-size: 30px;
+  font-weight: bold;
+  height: 40px;
+  margin-top: 2px;
+  position: relative;
+  text-align: center;
+  width: 40px;
+}
+
+#start {
+  background-color: rgb(132, 255, 130);
+  clear: left;
+  float: left;
+}
+
+#end {
+  background-color: rgb(132, 133, 255);
+  clear: right;
+  float: right;
+}
+
+#map .middle {
+  position: relative;
+  top: 1px;
+  width: 20%;
+  height: 48%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 45px;
+  border: 1px solid black;
+  border-bottom: none;
+}
+
+/* Footer */
+footer {
+  width: 600px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer div {
+  width: 100px;
+  height: 25px;
+  margin: auto;
+  background-color: #eeeeee;
+  border: 1px solid black;
+}
