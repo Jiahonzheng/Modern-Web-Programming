@@ -1,6 +1,6 @@
 <!-- 
   Modern Web Programming
-  Homework 6 Maze
+  Homework 6 Mole
   
   Author: Jiahao Zheng
   School ID: 16305204
@@ -14,7 +14,7 @@
 <html lang="en">
 
 <head>
-  <title>Mouse Maze</title>
+  <title>Whac-a-mole</title>
   <link rel="stylesheet" href="index.css">
   <script src="index.js"></script>
 </head>
@@ -26,11 +26,13 @@
       <p>Test your skill.how many boxes(moles) can you check(hit) in 30 seconds?</p>
       <div>
         <button id="controller">Start Game | Stop Game</button>
-        Time: <input type="text" name="time" id="time" value="30" disabled>
-      </div>
-      <div>
-        <input type="text" name="result" id="result" disabled>
-        Score: <input type="text" name="score" id="score" value="0" disabled>
+        <span>
+          Time: <input type="text" name="time" id="time" value="30" disabled>
+        </span>
+        <input type="text" name="result" id="result" value="Ready to Play" disabled>
+        <span>
+          Score: <input type="text" name="score" id="score" value="0" disabled>
+        </span>
       </div>
       <div></div>
     </header>

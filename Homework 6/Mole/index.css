@@ -1,3 +1,16 @@
+/*
+  Modern Web Programming
+  Homework 6 Mole
+
+  Author: Jiahao Zheng
+  School ID: 16305204
+  GitHub: https://github.com/Jiahonzheng
+  Mail: jiahonzheng@gmail.com
+
+  index.css
+  The CSS file for index.html
+ */
+
 body {
   margin: 0;
   padding: 0;
@@ -22,23 +35,68 @@ header p {
   font-size: 25px;
 }
 
+header div {
+  width: 320px;
+  overflow: hidden;
+  margin: auto auto;
+}
+
+header span {
+  float: right;
+  margin: 2px;
+}
+
+#controller,
+#result {
+  margin: 2px;
+  float: left;
+}
+
+#controller {
+  width: 180px;
+}
+
+#result {
+  width: 176px;
+}
+
+#time,
+#score {
+  width: 40px;
+}
+
 /* Main */
 main {
-  width: 60%;
-  margin: auto;
+  width: 340px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
   display: grid;
-  grid-gap: 1px;
   grid-template-columns: repeat(10, 1fr);
 }
 
 .hole {
-  margin: 5px 8px 5px 8px;
+  margin: 1px;
+  width: 34px;
+  height: 34px;
+  border-radius: 30%;
+  background-color: rgb(99, 99, 99);
+}
+
+.mole {
+  margin: 0.5px;
+  float: left;
+  width: 34px;
+  height: 34px;
+  border-radius: 30%;
+  background-color: rgb(236, 156, 5);
 }
 
 /* Footer */
 footer {
   font-family: Courier, "Andale Mono", Arial, sans-serif;
-  width: 70%;
+  width: 60%;
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
@@ -46,7 +104,6 @@ footer {
 
 footer h2 {
   font-size: 24px;
-  font-size: normal;
 }
 
 footer li {
