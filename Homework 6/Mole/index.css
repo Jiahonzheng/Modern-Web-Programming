@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin-top: 3%;
+}
+
+/* Header */
+header {
+  font-family: "Century Gothic", sans-serif;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 36px;
+  font-weight: 500;
+}
+
+header p {
+  font-size: 25px;
+}
+
+/* Main */
+main {
+  width: 60%;
+  margin: auto;
+  display: grid;
+  grid-gap: 1px;
+  grid-template-columns: repeat(10, 1fr);
+}
+
+.hole {
+  margin: 5px 8px 5px 8px;
+}
+
+/* Footer */
+footer {
+  font-family: Courier, "Andale Mono", Arial, sans-serif;
+  width: 70%;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer h2 {
+  font-size: 24px;
+  font-size: normal;
+}
+
+footer li {
+  font-weight: bold;
+}
