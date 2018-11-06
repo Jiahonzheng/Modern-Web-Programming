@@ -1,0 +1,43 @@
+<!-- 
+  Modern Web Programming
+  Homework 7 Fifteen Puzzle
+  
+  Author: Jiahao Zheng
+  School ID: 16305204
+  GitHub: https://github.com/Jiahonzheng
+  Mail: jiahonzheng@gmail.com
+
+  index.html
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Fifteen Puzzle</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+  <script src="js/index.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>拼图游戏</h1>
+    </header>
+
+    <main id="map"></main>
+
+    <div id="controller">
+      <button class="btn" onclick="game.start(true);"><span>开始</span> </button>
+      <button class="btn" onclick="game.start(false);"><span>复原</span></button>
+      <button class="btn" onclick="game.randomImage();"><span>更改图片</span></button>
+    </div>
+  </div>
+
+  <script>
+    const game = new Game();
+  </script>
+</body>
+
+</html>

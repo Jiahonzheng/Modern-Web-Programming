@@ -1,0 +1,71 @@
+/*
+  Modern Web Programming
+  Homework 7 Fifteen Puzzle
+
+  Author: Jiahao Zheng
+  School ID: 16305204
+  GitHub: https://github.com/Jiahonzheng
+  Mail: jiahonzheng@gmail.com
+
+  css/style.css
+  The CSS file for index.html
+ */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#container {
+  text-align: center;
+}
+
+#map {
+  height: 400px;
+  margin: 0 auto;
+  position: relative;
+  width: 400px;
+}
+
+.grid {
+  border: 1px gray solid;
+  height: 96px;
+  overflow: hidden;
+  position: absolute;
+  transition: all 0.25s ease-in-out;
+  width: 96px;
+}
+
+.grid img {
+  position: absolute;
+}
+
+.grid:hover {
+  box-shadow: 1px 1px 1px gray;
+}
+
+#controller {
+  padding: 20px;
+}
+
+.btn {
+  background-color: #2e9acc;
+  border-radius: 2px;
+  border-width: 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  color: #ecf0f1;
+  margin: 5px;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+  width: 120px;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: #27ae60;
+  box-shadow: 5px 5px 5px gray;
+}
+
+.btn span {
+  display: block;
+  padding: 12px 24px;
+}
