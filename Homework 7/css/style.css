@@ -35,8 +35,12 @@ body {
   width: 96px;
 }
 
-.grid img {
+.grid .img {
+  background-size: 100%;
+  height: 396px;
   position: absolute;
+  transition: all 0.25s ease-in-out;
+  width: 396px;
 }
 
 .grid:hover {
