@@ -1,0 +1,61 @@
+<!--
+  Modern Web Programming
+  Homework 8 Sign Up
+
+  Author: Jiahao Zheng
+  School ID: 16305204
+  GitHub: https://github.com/Jiahonzheng
+  Mail: jiahonzheng@gmail.com
+
+  userinfo.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sign Up</title>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="images/Jiahonzheng.jpeg" />
+    <link rel="stylesheet" href="css/semantic.min.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <script src="js/jquery-3.3.1.min.js"></script>
+  </head>
+
+  <body>
+    <div class="ui middle aligned center aligned grid">
+      <div class="column">
+        <table class="ui table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Username</td>
+              <td><%=username%></td>
+            </tr>
+            <tr>
+              <td>Student ID</td>
+              <td><%=stuId%></td>
+            </tr>
+            <tr>
+              <td>Phone</td>
+              <td><%=phone%></td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td><%=email%></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="ui message">
+          <a href="/register.html">Register</a> or
+          <a href="/login.html">Login</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

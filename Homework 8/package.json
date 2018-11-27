@@ -1,0 +1,15 @@
+{
+  "name": "sign-up",
+  "version": "0.0.0",
+  "description": "Modern Web Programming",
+  "author": "",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node_modules/.bin/nodemon index.js",
+    "prettier": "node_modules/.bin/prettier -.prettierrc -config ./ --loglevel silent --write \"./**/*.js\""
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.6",
+    "prettier": "^1.15.2"
+  }
+}
