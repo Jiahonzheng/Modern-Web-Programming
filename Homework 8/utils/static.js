@@ -22,9 +22,14 @@ function static(req, res, next) {
   const {url} = req;
   let pathname = "";
 
+  if (url.indexOf("?") !== -1) {
+    next();
+    return;
+  }
+
   if (url.indexOf("..") != -1) {
     res.statusCode = 400;
-    res.end("Not a valid path");
+    res.end("Invalid Path");
     return;
   }
 

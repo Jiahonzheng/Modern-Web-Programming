@@ -24,7 +24,7 @@ $(document).ready(function() {
       .then((res) => res.json())
       .then((res) => {
         if (res.code === 200) {
-          window.location.href = `/userinfo?username=${username}`;
+          window.location.href = `/?username=${username}`;
           return;
         }
 

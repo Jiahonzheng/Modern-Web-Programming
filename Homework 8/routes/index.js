@@ -7,7 +7,7 @@ const routes = {GET: [], POST: [], PUT: [], DELETE: []};
 
 routes.GET = [
   {
-    url: "/userinfo",
+    url: "/",
     handles: [userinfo]
   }
 ];
