@@ -1,0 +1,225 @@
+/*
+  Modern Web Programming
+  Homework 8
+
+  Author: Jiahao Zheng
+  School ID: 16305204
+  GitHub: https://github.com/Jiahonzheng
+  Mail: jiahonzheng@gmail.com
+
+  style.css
+  The CSS file for index.html
+*/
+
+html,
+body {
+  height: 100%;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#at-plus-container {
+  font-family: Sans-serif;
+  font-weight: bold;
+  height: 100%;
+  position: relative;
+  text-align: center;
+  vertical-align: bottom;
+}
+
+#bottom-positioner {
+  bottom: 100px;
+  display: inline-block;
+  height: 40px;
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  width: 40px;
+}
+
+#bottom-positioner:hover {
+  bottom: 0px;
+  height: 310px;
+  width: 180px;
+}
+
+#button {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+}
+
+#bottom-positioner:hover #button {
+  bottom: 100px;
+  left: 70px;
+}
+
+#info-bar {
+  background-color: #7e7e80;
+  border-radius: 50%;
+  bottom: -35px;
+  height: 140px;
+  left: -50px;
+  opacity: 0;
+  position: absolute;
+  transform: scale(0);
+  transition: all 0.5s ease-in-out;
+  width: 140px;
+}
+
+#info-bar[valid] {
+  background-color: rgba(50, 60, 150, 1);
+}
+
+#bottom-positioner:hover #info-bar {
+  bottom: 60px;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.page {
+  position: absolute;
+}
+
+.page span {
+  color: white;
+  display: inline-block;
+  margin-left: 10px;
+  opacity: 1;
+  transition: ease-out 0.5s;
+}
+
+.comment {
+  left: 40px;
+  top: 50px;
+}
+
+.comment span {
+  color: #59c193;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.like {
+  left: 74px;
+  top: 95px;
+}
+
+#control-ring li {
+  background-color: rgba(50, 60, 150, 1);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 50%;
+  border-radius: 50%;
+  bottom: 2.5px;
+  height: 25px;
+  left: 2.5px;
+  opacity: 0;
+  padding: 5px;
+  position: absolute;
+  transition: ease-out 0.5s;
+  width: 25px;
+}
+
+#control-ring[calculating] li {
+  background-color: #7e7e80;
+}
+
+#control-ring[calculating] li[calculating] {
+  background-color: rgba(50, 60, 150, 1);
+}
+
+#control-ring li[calculated] {
+  background-color: #7e7e80;
+}
+
+#control-ring li .text {
+  color: #59c193;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 25px;
+}
+
+#control-ring li .unread {
+  display: none;
+}
+
+#control-ring li[value] .unread {
+  display: inherit;
+}
+
+#bottom-positioner:hover #control-ring li:nth-child(1) {
+  left: -57px;
+  bottom: 40px;
+}
+
+#bottom-positioner:hover #control-ring li:nth-child(2) {
+  left: -68px;
+  bottom: 0px;
+}
+
+#bottom-positioner:hover #control-ring li:nth-child(3) {
+  left: -57px;
+  bottom: -41px;
+}
+
+#bottom-positioner:hover #control-ring li:nth-child(4) {
+  left: -20px;
+  bottom: -65px;
+}
+
+#bottom-positioner:hover #control-ring li:nth-child(5) {
+  left: 25px;
+  bottom: -62px;
+}
+
+#bottom-positioner:hover #control-ring li {
+  opacity: 1;
+}
+
+#sum {
+  user-select: text;
+}
+
+.unread {
+  background-color: red;
+  border-radius: 50%;
+  bottom: 20px;
+  color: white;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: normal;
+  height: 20px;
+  left: 24px;
+  line-height: 18px;
+  position: absolute;
+  transition: ease-out 0.5s;
+  width: 20px;
+}
+
+.apb {
+  background-color: #7171c6;
+  background-image: url(assets/images/atplus_white.png);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  height: 30px;
+  opacity: 0.5;
+  padding: 5px;
+  position: absolute;
+  transition: transform 0.5s ease-in-out;
+  width: 30px;
+}
+
+#bottom-positioner:hover .apb {
+  background-image: url(assets/images/atplus_green.png);
+  background-size: 66%;
+  background-color: rgba(48, 63, 159, 1);
+  transform: scale(1.5);
+  opacity: 1;
+}

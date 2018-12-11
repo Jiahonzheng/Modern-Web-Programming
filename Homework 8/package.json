@@ -1,0 +1,16 @@
+{
+  "name": "homework-8",
+  "version": "0.0.0",
+  "description": "Homework 8",
+  "author": {
+    "name": "Jiahonzheng",
+    "email": "jiahonzheng@gmail.com"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node_modules/.bin/nodemon index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.7"
+  }
+}
