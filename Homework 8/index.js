@@ -3,6 +3,7 @@ const url = require("url");
 const path = require("path");
 const fs = require("fs");
 
+const allowedOrigins = ["http://localhost:3000", "http://127.0.0.1:3000"];
 const mime = {
   ".html": "text/html",
   ".js": "application/javascript",
@@ -20,7 +21,7 @@ const server = http.createServer(function(req, res) {
   req.mime = mime[path.extname(pathname)];
 
   if (req.mime === undefined) {
-    handleAjax(req, res);
+    cors(req, res, handleAjax);
     return;
   }
 
@@ -31,8 +32,14 @@ server.listen(port, function() {
   console.log(`server is listening on: 0.0.0.0:${port}`);
 });
 
-function random(range) {
-  return Math.round(Math.random() * range);
+function cors(req, res, next) {
+  if (allowedOrigins.includes(req.headers.origin)) {
+    res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
+    res.setHeader("Access-Control-Allow-Methods", "GET");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+  }
+  next(req, res);
 }
 
 function handleAjax(req, res) {
@@ -65,4 +72,8 @@ function handleStatic(req, res) {
     });
     res.end(data);
   });
+}
+
+function random(range) {
+  return Math.round(Math.random() * range);
 }
