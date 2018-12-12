@@ -1,6 +1,20 @@
 $(document).ready(function() {
   let mutex = 0;
 
+  $("#info-bar").click(function(e) {
+    const self = $(this);
+
+    if (!self.attr("valid")) return;
+
+    $("#sum").text(
+      $("#control-ring li .unread")
+        .toArray()
+        .map(x => parseInt($(x).text()))
+        .reduce((a, b) => a + b)
+    );
+    self.removeAttr("valid");
+  });
+
   // Reset
   $("#bottom-positioner").mouseenter(function(e) {
     mutex++;
@@ -20,30 +34,25 @@ $(document).ready(function() {
   });
 
   $("#control-ring li").click(function(e) {
-    if ($(this).attr("value") || $("#control-ring").attr("calculating")) return;
-
+    const self = $(this);
     let pre = mutex;
 
-    $(this)
-      .find(".unread")
-      .text("...");
-    $(this)
-      .attr("value", "...")
-      .attr("calculating", "calculating");
+    if (self.attr("value") || $("#control-ring").attr("calculating")) return;
+
+    self.find(".unread").text("...");
+    self.attr("calculating", "calculating").attr("value", "...");
     $("#control-ring").attr("calculating", "calculating");
 
-    // It might have some cors problem.
-    fetch("http://localhost:3000/")
+    fetch("http://localhost:3000/api")
       .then(res => res.text())
       .then(data => {
         if (mutex !== pre) return;
-        $(this)
-          .find(".unread")
-          .text(data);
-        $(this)
-          .attr("value", data)
+
+        self.find(".unread").text(data);
+        self
+          .removeAttr("calculating")
           .attr("calculated", "calculated")
-          .removeAttr("calculating");
+          .attr("value", data);
         $("#control-ring").removeAttr("calculating");
 
         const left = $("#control-ring li")
@@ -53,16 +62,5 @@ $(document).ready(function() {
         if (left.length == 0) $("#info-bar").attr("valid", "valid");
       })
       .catch(err => console.log(err));
-  });
-
-  $("#info-bar").click(function(e) {
-    if (!$(this).attr("valid")) return;
-    $("#sum").text(
-      $("#control-ring li .unread")
-        .toArray()
-        .map(x => parseInt($(x).text()))
-        .reduce((a, b) => a + b)
-    );
-    $(this).removeAttr("valid");
   });
 });

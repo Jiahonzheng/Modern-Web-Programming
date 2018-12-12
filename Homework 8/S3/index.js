@@ -1,6 +1,16 @@
 $(document).ready(function() {
   let mutex = 0;
 
+  $("#apb").click(function(e) {
+    if ($("#sum").text()) return;
+
+    const promises = $("#control-ring li")
+      .toArray()
+      .map(li => async($(li)));
+
+    Promise.all(promises).then(() => onInfoBarClicked($("#info-bar")));
+  });
+
   // Reset
   $("#bottom-positioner").mouseenter(function(e) {
     mutex++;
@@ -22,22 +32,24 @@ $(document).ready(function() {
   function async(ele) {
     return new Promise(function(resolve, reject) {
       if (ele.attr("value")) return;
+
       ele.find(".unread").text("...");
-      ele.attr("value", "...").attr("calculating", "calculating");
+      ele.attr("calculating", "calculating").attr("value", "...");
       $("#control-ring").attr("calculating", "calculating");
 
       let pre = mutex;
 
       // It might have some cors problem.
-      fetch("http://localhost:3000/")
+      fetch("http://localhost:3000/api")
         .then(res => res.text())
         .then(data => {
           if (mutex !== pre) return;
+
           ele.find(".unread").text(data);
           ele
-            .attr("value", data)
+            .removeAttr("calculating")
             .attr("calculated", "calculated")
-            .removeAttr("calculating");
+            .attr("value", data);
           $("#control-ring").removeAttr("calculating");
 
           const left = $("#control-ring li")
@@ -45,6 +57,7 @@ $(document).ready(function() {
             .filter(x => $(x).attr("value") === "..." || !$(x).attr("value"));
 
           if (left.length == 0) $("#info-bar").attr("valid", "valid");
+
           resolve();
         })
         .catch(err => reject(err));
@@ -54,23 +67,14 @@ $(document).ready(function() {
   function onInfoBarClicked(ele) {
     return new Promise(function(resolve, reject) {
       if (!ele.attr("valid")) return;
+
       $("#sum").text(
         $("#control-ring li .unread")
           .toArray()
-          .map(x => parseInt($(x).text()))
+          .map(ele => parseInt($(ele).text()))
           .reduce((a, b) => a + b, 0)
       );
       ele.removeAttr("valid");
     });
   }
-
-  $("#apb").click(function(e) {
-    if ($("#sum").text()) return;
-    
-    const promises = $("#control-ring li")
-      .toArray()
-      .map(li => async($(li)));
-
-    Promise.all(promises).then(() => onInfoBarClicked($("#info-bar")));
-  });
 });

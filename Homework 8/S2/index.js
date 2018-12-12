@@ -1,6 +1,18 @@
 $(document).ready(function() {
   let mutex = 0;
 
+  $("#apb").click(function(e) {
+    if ($("#sum").text()) return;
+
+    $("#control-ring li")
+      .toArray()
+      .reduce(async (pre, cur) => {
+        await pre;
+        await async($(cur));
+      }, Promise.resolve())
+      .then(() => onInfoBarClicked($("#info-bar")));
+  });
+
   // Reset
   $("#bottom-positioner").mouseenter(function(e) {
     mutex++;
@@ -22,22 +34,24 @@ $(document).ready(function() {
   function async(ele) {
     return new Promise(function(resolve, reject) {
       if (ele.attr("value") || $("#control-ring").attr("calculating")) return;
+
       ele.find(".unread").text("...");
-      ele.attr("value", "...").attr("calculating", "calculating");
+      ele.attr("calculating", "calculating").attr("value", "...");
       $("#control-ring").attr("calculating", "calculating");
 
       let pre = mutex;
 
       // It might have some cors problem.
-      fetch("http://localhost:3000/")
+      fetch("http://localhost:3000/api")
         .then(res => res.text())
         .then(data => {
           if (mutex !== pre) return;
+
           ele.find(".unread").text(data);
           ele
-            .attr("value", data)
+            .removeAttr("calculating")
             .attr("calculated", "calculated")
-            .removeAttr("calculating");
+            .attr("value", data);
           $("#control-ring").removeAttr("calculating");
 
           const left = $("#control-ring li")
@@ -45,6 +59,7 @@ $(document).ready(function() {
             .filter(x => $(x).attr("value") === "..." || !$(x).attr("value"));
 
           if (left.length == 0) $("#info-bar").attr("valid", "valid");
+
           resolve();
         })
         .catch(err => reject(err));
@@ -54,6 +69,7 @@ $(document).ready(function() {
   function onInfoBarClicked(ele) {
     return new Promise(function(resolve, reject) {
       if (!ele.attr("valid")) return;
+
       $("#sum").text(
         $("#control-ring li .unread")
           .toArray()
@@ -63,16 +79,4 @@ $(document).ready(function() {
       ele.removeAttr("valid");
     });
   }
-
-  $("#apb").click(function(e) {
-    if ($("#sum").text()) return;
-    
-    const rings = $("#control-ring li").toArray();
-    let promise = Promise.resolve();
-
-    for (let i = 0; i < rings.length; i++)
-      promise = promise.then(() => async($(rings[i])));
-
-    promise.then(() => onInfoBarClicked($("#info-bar")));
-  });
 });
