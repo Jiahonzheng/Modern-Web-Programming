@@ -40,7 +40,11 @@ $(document).ready(function() {
       let pre = mutex;
 
       // It might have some cors problem.
-      fetch("http://localhost:3000/api")
+      fetch("http://localhost:3000/api", {
+        headers: {
+          "Cache-Control": "no-cache"
+        }
+      })
         .then(res => res.text())
         .then(data => {
           if (mutex !== pre) return;
