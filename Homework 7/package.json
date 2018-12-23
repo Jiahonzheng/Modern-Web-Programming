@@ -1,7 +1,7 @@
 {
   "name": "sign-up",
   "version": "0.0.0",
-  "description": "Modern Web Programming",
+  "description": "Homework 7 of Modern Web Programming",
   "author": "",
   "scripts": {
     "start": "node index.js",
