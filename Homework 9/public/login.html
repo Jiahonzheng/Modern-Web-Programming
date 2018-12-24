@@ -1,0 +1,54 @@
+<!--
+  Modern Web Programming
+  Homework 9 Sign In
+
+  Author: Jiahao Zheng
+  School ID: 16305204
+  GitHub: https://github.com/Jiahonzheng
+  Mail: jiahonzheng@gmail.com
+
+  login.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sign In</title>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="images/Jiahonzheng.jpeg" />
+    <link rel="stylesheet" href="css/semantic.min.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/login.js"></script>
+  </head>
+
+  <body>
+    <div class="ui middle aligned center aligned grid">
+      <div class="column">
+        <form class="ui large form" id="register-form">
+          <div class="ui stacked secondary segment">
+            <div class="field" id="username">
+              <div class="ui input">
+                <input type="text" name="username" placeholder="Username" />
+              </div>
+            </div>
+
+            <div class="field" id="password">
+              <div class="ui input">
+                <input type="password" name="password" placeholder="Password" />
+              </div>
+            </div>
+
+            <button class="ui fluid large teal submit button" type="submit">
+              Login
+            </button>
+          </div>
+
+          <div class="ui error message" id="errors"></div>
+        </form>
+
+        <div class="ui message">New to us? <a href="/regist">Register</a></div>
+      </div>
+    </div>
+  </body>
+</html>

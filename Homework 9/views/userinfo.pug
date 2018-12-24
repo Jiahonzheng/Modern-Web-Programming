@@ -1,0 +1,53 @@
+doctype html
+//
+  Modern Web Programming
+  Homework 9 Sign In
+  Author: Jiahao Zheng
+  School ID: 16305204
+  GitHub: https://github.com/Jiahonzheng
+  Mail: jiahonzheng@gmail.com
+  userinfo.html
+head
+  title User Info
+  meta(charset='utf-8')
+  link(rel='shortcut icon', href='images/Jiahonzheng.jpeg')
+  link(rel='stylesheet', href='css/semantic.min.css')
+  link(rel='stylesheet', href='css/common.css')
+  script(src='js/jquery-3.3.1.min.js')
+.ui.middle.aligned.center.aligned.grid
+  .column
+    if error
+      .ui.message.error
+        p Unauthorized Access
+
+    if !hasFound
+      .ui.message.error
+        p User Not Found
+
+    table.ui.table
+      thead
+        tr
+          th Name
+          th Value
+      tbody
+        tr
+          td Username
+          td #{username}
+        tr
+          td Student ID
+          td #{stuId}
+        tr
+          td Phone
+          td #{phone}
+        tr
+          td Email
+          td #{email}
+
+    if !hasSession
+      .ui.message
+        a(href='/regist') Register
+        |  or 
+        a(href='/login') Login
+    else
+      .ui.message
+        a(href='/api/v1/logout') Logout
